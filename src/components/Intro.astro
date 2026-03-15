@@ -1,226 +1,251 @@
 ---
+
 ---
+
 <section id="intro" class="intro">
-  <!-- Background grid lines -->
-  <div class="grid-bg" aria-hidden="true"></div>
+    <!-- Background grid lines -->
+    <div class="grid-bg" aria-hidden="true"></div>
 
-  <div class="intro-inner">
-    <div class="intro-tag reveal">
-      <span class="dot"></span>
-      <span>available for work</span>
+    <div class="intro-inner">
+        <!-- <div class="intro-tag reveal">
+            <span class="dot"></span>
+            <span>available for work</span>
+        </div> -->
+
+        <h1 class="intro-heading reveal" style="transition-delay: 0.1s">
+            <span class="line">Building things</span>
+            <span class="line italic">for the web</span>
+            <span class="line">& beyond.</span>
+        </h1>
+
+        <p class="intro-sub reveal" style="transition-delay: 0.2s">
+            Software developer focused on complete systems. I craft elegant,
+            performant products — from frontend interfaces to backend APIs.
+        </p>
+
+        <div class="intro-actions reveal" style="transition-delay: 0.3s">
+            <a href="#projects" class="btn-primary">view my work</a>
+            <a href="#contact" class="btn-ghost">get in touch</a>
+        </div>
+
+        <div class="intro-stack reveal" style="transition-delay: 0.4s">
+            <span class="stack-label">stack</span>
+            <div class="stack-items">
+                <span>Swift</span>
+                <span>SwiftUI</span>
+                <span>Laravel</span>
+                <span>Android</span>
+                <span>AWS</span>
+                <span>MySQL</span>
+                <span>TypeScript</span>
+            </div>
+        </div>
     </div>
 
-    <h1 class="intro-heading reveal" style="transition-delay: 0.1s">
-      <span class="line">Building things</span>
-      <span class="line italic">for the web</span>
-      <span class="line">& beyond.</span>
-    </h1>
-
-    <p class="intro-sub reveal" style="transition-delay: 0.2s">
-      Full-stack developer focused on iOS & backend systems.
-      I craft elegant, performant products — from SwiftUI interfaces
-      to Laravel APIs running on AWS.
-    </p>
-
-    <div class="intro-actions reveal" style="transition-delay: 0.3s">
-      <a href="#projects" class="btn-primary">view my work</a>
-      <a href="#contact" class="btn-ghost">get in touch</a>
-    </div>
-
-    <div class="intro-stack reveal" style="transition-delay: 0.4s">
-      <span class="stack-label">stack</span>
-      <div class="stack-items">
-        <span>Swift</span>
-        <span>SwiftUI</span>
-        <span>Laravel</span>
-        <span>PHP</span>
-        <span>AWS</span>
-        <span>MySQL</span>
-        <span>TypeScript</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Decorative large number -->
-  <div class="deco-num" aria-hidden="true">01</div>
+    <!-- Decorative large number -->
+    <div class="deco-num" aria-hidden="true">01</div>
 </section>
 
 <style>
-  .intro {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    position: relative;
-    padding: 8rem 3rem 4rem;
-    overflow: hidden;
-  }
-
-  /* Subtle grid background */
-  .grid-bg {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
-  }
-
-  .intro-inner {
-    max-width: 860px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .intro-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent);
-    border: 1px solid rgba(232,168,68,0.25);
-    background: rgba(232,168,68,0.06);
-    padding: 0.35rem 0.8rem;
-    border-radius: 2px;
-    margin-bottom: 2rem;
-  }
-
-  .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    animation: pulse 2s ease infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.7); }
-  }
-
-  .intro-heading {
-    font-family: var(--font-display);
-    font-size: clamp(3rem, 7vw, 6.5rem);
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    color: var(--text);
-    margin-bottom: 2rem;
-  }
-
-  .intro-heading .line {
-    display: block;
-  }
-
-  .intro-heading .italic {
-    font-style: italic;
-    color: var(--accent);
-  }
-
-  .intro-sub {
-    font-size: 1.05rem;
-    color: var(--text-muted);
-    max-width: 480px;
-    line-height: 1.8;
-    margin-bottom: 2.5rem;
-  }
-
-  .intro-actions {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 4rem;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.06em;
-    text-transform: lowercase;
-    padding: 0.85rem 2rem;
-    background: var(--accent);
-    color: var(--bg);
-    border-radius: 2px;
-    font-weight: 500;
-    transition: opacity 0.2s, transform 0.2s;
-  }
-  .btn-primary:hover {
-    opacity: 0.88;
-    transform: translateY(-1px);
-  }
-
-  .btn-ghost {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.06em;
-    text-transform: lowercase;
-    padding: 0.85rem 2rem;
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    border-radius: 2px;
-    transition: border-color 0.2s, color 0.2s, transform 0.2s;
-  }
-  .btn-ghost:hover {
-    border-color: rgba(255,255,255,0.2);
-    color: var(--text);
-    transform: translateY(-1px);
-  }
-
-  .intro-stack {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .stack-label {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-
-  .stack-items {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-
-  .stack-items span {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    padding: 0.25rem 0.6rem;
-    background: var(--bg-2);
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    color: var(--text-muted);
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .stack-items span:hover {
-    border-color: rgba(232,168,68,0.3);
-    color: var(--accent);
-  }
-
-  .deco-num {
-    position: absolute;
-    right: 3rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-family: var(--font-display);
-    font-size: clamp(8rem, 18vw, 18rem);
-    color: rgba(255,255,255,0.02);
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
-  }
-
-  @media (max-width: 700px) {
     .intro {
-      padding: 7rem 1.5rem 4rem;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        padding: 8rem 3rem 4rem;
+        overflow: hidden;
     }
-    .deco-num { display: none; }
-  }
+
+    /* Subtle grid background */
+    .grid-bg {
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+            linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.025) 1px,
+                transparent 1px
+            );
+        background-size: 60px 60px;
+        mask-image: radial-gradient(
+            ellipse 80% 70% at 50% 50%,
+            black 30%,
+            transparent 100%
+        );
+    }
+
+    .intro-inner {
+        max-width: 860px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .intro-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+        border: 1px solid rgba(232, 168, 68, 0.25);
+        background: rgba(232, 168, 68, 0.06);
+        padding: 0.35rem 0.8rem;
+        border-radius: 2px;
+        margin-bottom: 2rem;
+    }
+
+    .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent);
+        animation: pulse 2s ease infinite;
+    }
+
+    @keyframes pulse {
+        0%,
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.5;
+            transform: scale(0.7);
+        }
+    }
+
+    .intro-heading {
+        font-family: var(--font-display);
+        font-size: clamp(3rem, 7vw, 6.5rem);
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+        color: var(--text);
+        margin-bottom: 2rem;
+    }
+
+    .intro-heading .line {
+        display: block;
+    }
+
+    .intro-heading .italic {
+        font-style: italic;
+        color: var(--accent);
+    }
+
+    .intro-sub {
+        font-size: 1.05rem;
+        color: var(--text-muted);
+        max-width: 480px;
+        line-height: 1.8;
+        margin-bottom: 2.5rem;
+    }
+
+    .intro-actions {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 4rem;
+        flex-wrap: wrap;
+    }
+
+    .btn-primary {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.06em;
+        text-transform: lowercase;
+        padding: 0.85rem 2rem;
+        background: var(--accent);
+        color: var(--bg);
+        border-radius: 2px;
+        font-weight: 500;
+        transition:
+            opacity 0.2s,
+            transform 0.2s;
+    }
+    .btn-primary:hover {
+        opacity: 0.88;
+        transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.06em;
+        text-transform: lowercase;
+        padding: 0.85rem 2rem;
+        border: 1px solid var(--border);
+        color: var(--text-muted);
+        border-radius: 2px;
+        transition:
+            border-color 0.2s,
+            color 0.2s,
+            transform 0.2s;
+    }
+    .btn-ghost:hover {
+        border-color: rgba(255, 255, 255, 0.2);
+        color: var(--text);
+        transform: translateY(-1px);
+    }
+
+    .intro-stack {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .stack-label {
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+    }
+
+    .stack-items {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .stack-items span {
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        padding: 0.25rem 0.6rem;
+        background: var(--bg-2);
+        border: 1px solid var(--border);
+        border-radius: 2px;
+        color: var(--text-muted);
+        transition:
+            border-color 0.2s,
+            color 0.2s;
+    }
+    .stack-items span:hover {
+        border-color: rgba(232, 168, 68, 0.3);
+        color: var(--accent);
+    }
+
+    .deco-num {
+        position: absolute;
+        right: 3rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: var(--font-display);
+        font-size: clamp(8rem, 18vw, 18rem);
+        color: rgba(255, 255, 255, 0.02);
+        line-height: 1;
+        pointer-events: none;
+        user-select: none;
+    }
+
+    @media (max-width: 700px) {
+        .intro {
+            padding: 7rem 1.5rem 4rem;
+        }
+        .deco-num {
+            display: none;
+        }
+    }
 </style>
