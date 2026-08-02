@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="2000" viewBox="0 0 2000 2000" aria-labelledby="title desc">
+  <title>Ace logo</title>
+  <desc>
+    A minimalist warm-white Ace wordmark with a red dot on a charcoal background.
+  </desc>
+  <path fill="#0000" d="M0 0h2000v2000H0z"/>
+  <path d="m611 1142 117-380 110 380m-226-1 190-103m299-91c-24-31-58-49-101-49-73 0-121 54-121 124s49 122 121 122c43 0 78-17 101-51m289-72c-1-70-55-123-122-123-72 0-127 54-127 124s55 122 127 122c52 0 88-21 112-51m-238-71h248" fill="none" stroke="#fbfaf7" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="1550" cy="1100" r="60" fill="#d64238"/>
+</svg>

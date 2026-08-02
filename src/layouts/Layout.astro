@@ -1,4 +1,6 @@
 ---
+import "../styles/theme.css";
+
 interface Props {
   title?: string;
 }
@@ -21,20 +23,6 @@ const { title = "Nitesh Poudel — Developer" } = Astro.props;
   <body>
     <slot />
     <style is:global>
-      :root {
-        --bg: #ffffff;
-        --bg-2: #f5f4f1;
-        --bg-3: #ece9e3;
-        --border: rgba(0, 0, 0, 0.1);
-        --text: #1a1814;
-        --text-muted: rgba(30, 25, 20, 0.5);
-        --accent: #c8861a;
-        --accent-dim: rgba(200, 134, 26, 0.12);
-        --font-display: "DM Serif Display", Georgia, serif;
-        --font-mono: "JetBrains Mono", "Courier New", monospace;
-        --font-body: "DM Sans", sans-serif;
-      }
-
       *,
       *::before,
       *::after {
@@ -75,7 +63,7 @@ const { title = "Nitesh Poudel — Developer" } = Astro.props;
         border-radius: 2px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: rgba(0, 0, 0, 0.25);
+        background: var(--color-border-strong);
       }
 
       a {

@@ -1,0 +1,82 @@
+/*
+ * Ace portfolio theme
+ * The palette is derived from the supplied logo: soft paper, graphite, and signal red.
+ * Set `data-theme="dark"` on <html> to use the dark variant.
+ */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Brand primitives */
+  --ace-paper: #fbfaf7;
+  --ace-white: #fffefd;
+  --ace-graphite: #1e1e1e;
+  --ace-charcoal: #2a2a2a;
+  --ace-red: #df4037;
+  --ace-red-hover: #c9352e;
+
+  /* Semantic color tokens */
+  --color-bg: var(--ace-paper);
+  --color-surface: #f4f2ed;
+  --color-surface-raised: var(--ace-white);
+  --color-text: var(--ace-graphite);
+  --color-text-muted: #706e68;
+  --color-text-subtle: #a19e97;
+  --color-border: #dedbd4;
+  --color-border-strong: #bcb8af;
+  --color-accent: var(--ace-red);
+  --color-accent-hover: var(--ace-red-hover);
+  --color-accent-soft: rgb(223 64 55 / 10%);
+  --color-accent-subtle: rgb(223 64 55 / 3%);
+  --color-accent-glow: rgb(223 64 55 / 70%);
+  --color-accent-border: rgb(223 64 55 / 36%);
+  --color-focus-ring: rgb(223 64 55 / 42%);
+  --color-nav-background: rgb(251 250 247 / 88%);
+  --color-grid-line: rgb(30 30 30 / 6%);
+  --color-decorative: rgb(30 30 30 / 5%);
+
+  /* Typography, shape, and motion */
+  --font-display: "DM Serif Display", Georgia, serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+  --font-body: "DM Sans", sans-serif;
+  --radius-sm: 2px;
+  --duration-fast: 160ms;
+  --duration-base: 240ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg: #1e1e1e;
+  --color-surface: #252525;
+  --color-surface-raised: #2b2b2b;
+  --color-text: #fffefd;
+  --color-text-muted: #b8b6b1;
+  --color-text-subtle: #807e79;
+  --color-border: #3a3a3a;
+  --color-border-strong: #575757;
+  --color-accent: #e64a41;
+  --color-accent-hover: #f05a50;
+  --color-accent-soft: rgb(230 74 65 / 15%);
+  --color-accent-subtle: rgb(230 74 65 / 3%);
+  --color-accent-glow: rgb(230 74 65 / 70%);
+  --color-accent-border: rgb(230 74 65 / 48%);
+  --color-focus-ring: rgb(230 74 65 / 52%);
+  --color-nav-background: rgb(30 30 30 / 88%);
+  --color-grid-line: rgb(255 254 253 / 7%);
+  --color-decorative: rgb(255 254 253 / 6%);
+}
+
+/* Backward-compatible aliases for existing portfolio components. */
+:root,
+[data-theme] {
+  --bg: var(--color-bg);
+  --bg-2: var(--color-surface);
+  --bg-3: var(--color-surface-raised);
+  --border: var(--color-border);
+  --text: var(--color-text);
+  --text-muted: var(--color-text-muted);
+  --accent: var(--color-accent);
+  --accent-dim: var(--color-accent-soft);
+}
