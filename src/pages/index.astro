@@ -3,10 +3,52 @@ import ThemeToggle from "../components/ThemeToggle.astro";
 import logoDark from "../assets/logo-dark.svg?url";
 import logoLight from "../assets/logo-light.svg?url";
 
-const navigation = [
-  { label: "About", href: "#about" },
-  { label: "Work", href: "#work" },
-  { label: "Contact", href: "#contact" },
+const projects = [
+  {
+    number: "01",
+    name: "Stacks",
+    type: "Social platform for iOS",
+    summary:
+      "A full-stack social product built around fluid media sharing, from the SwiftUI interface to the infrastructure behind every upload.",
+    detail:
+      "Designed a multipart upload flow, S3 storage strategy, queue-based media processing, and OTP authentication for an experience that stays responsive as content grows.",
+    stack: ["SwiftUI", "Laravel", "AWS S3", "MySQL", "Redis"],
+    visual: "flow",
+  },
+  {
+    number: "02",
+    name: "APIClient",
+    type: "Type-safe HTTP layer for Swift",
+    summary:
+      "A modular networking layer that makes HTTP work feel predictable across a growing Swift codebase.",
+    detail:
+      "Separates encodable payloads from file uploads at the protocol layer, solving type-erasure issues around multipart form data without making calling code harder to read.",
+    stack: ["Swift", "Combine", "REST", "Protocols"],
+    visual: "code",
+  },
+  {
+    number: "03",
+    name: "ProcessQueue",
+    type: "Resilient media pipeline",
+    summary:
+      "A background job pipeline for turning raw uploads into dependable, ready-to-use media.",
+    detail:
+      "Handles HEIC to JPEG conversion, S3 path validation, retries, and structured AWS error reporting so failures are visible and recoverable instead of silently destructive.",
+    stack: ["Laravel", "Queues", "AWS", "S3", "PHP"],
+    visual: "queue",
+  },
+];
+
+const practices = [
+  ["Product-minded", "I start with the customer journey, then choose the technical shape that makes it durable."],
+  ["Systems-first", "Interfaces, APIs, queues, and storage are designed as one system instead of a collection of handoffs."],
+  ["Built to ship", "I favour clear architecture, observability, and pragmatic testing so a product can keep moving after launch."],
+];
+
+const experience = [
+  ["2022 - Present", "Independent", "Full-stack products across SwiftUI, Laravel, and AWS."],
+  ["2020 - 2022", "Backend engineering", "Consumer-platform architecture, queues, APIs, and storage."],
+  ["2018 - 2020", "iOS development", "Shipped client applications and reusable mobile foundations."],
 ];
 ---
 
@@ -15,7 +57,7 @@ const navigation = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Nitesh Poudel, software engineer." />
+    <meta name="description" content="Nitesh Poudel is a software engineer building thoughtful mobile and web products." />
     <title>Nitesh Poudel | Software Engineer</title>
     <script is:inline>
       const savedTheme = localStorage.getItem("theme");
@@ -27,170 +69,259 @@ const navigation = [
   <body>
     <header class="site-header">
       <nav aria-label="Primary navigation">
-        <a class="brand" href="/" aria-label="Nitesh Poudel home">
+        <a class="brand" href="#top" aria-label="Nitesh Poudel home">
           <span class="brand-logo">
             <img class="brand-logo__light" src={logoLight} alt="" />
             <img class="brand-logo__dark" src={logoDark} alt="" />
           </span>
         </a>
 
-        <ul>
-          {navigation.map((item) => (
-            <li><a href={item.href}>{item.label}</a></li>
-          ))}
-          <li><ThemeToggle /></li>
-        </ul>
+        <div class="nav-actions">
+          <a href="#work">Work</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+          <ThemeToggle />
+        </div>
       </nav>
     </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <p class="eyebrow"><span></span> Independent software engineer</p>
+        <div class="hero-copy">
+          <h1 id="hero-title">Thoughtful software, built for the long run.</h1>
+          <p>
+            I design and build mobile products, dependable backends, and the infrastructure that connects them.
+          </p>
+        </div>
+        <a class="hero-link" href="#work">Explore selected work <span aria-hidden="true">&#8595;</span></a>
+      </section>
+
+      <section class="work" id="work" aria-labelledby="work-title">
+        <div class="section-intro">
+          <p class="eyebrow">01 / Selected work</p>
+          <h2 id="work-title">A few systems I have enjoyed building.</h2>
+        </div>
+
+        <div class="project-list">
+          {projects.map((project) => (
+            <article class="project" id={project.name.toLowerCase()}>
+              <div class={`project-visual project-visual--${project.visual}`} aria-hidden="true">
+                {project.visual === "flow" && (
+                  <div class="flow-ui">
+                    <div class="flow-top"><i></i><i></i><i></i></div>
+                    <div class="flow-feed">
+                      <div class="avatar"></div><div class="line-group"><b></b><span></span></div>
+                      <div class="image-block"></div>
+                    </div>
+                    <div class="upload-card"><span>Uploading media</span><b></b></div>
+                  </div>
+                )}
+                {project.visual === "code" && (
+                  <pre class="code-ui"><code><span>protocol</span> Requesting {`{`}<br />&nbsp;&nbsp;<em>func</em> send&lt;Response&gt;(<br />&nbsp;&nbsp;&nbsp;&nbsp;_ request: Request<br />&nbsp;&nbsp;) <span>async throws</span> -&gt; Response<br />{`}`}</code></pre>
+                )}
+                {project.visual === "queue" && (
+                  <div class="queue-ui">
+                    <div class="queue-label">media.process</div>
+                    <div class="queue-row"><b></b><span>validate upload</span><i>done</i></div>
+                    <div class="queue-row"><b></b><span>convert image</span><i>active</i></div>
+                    <div class="queue-row"><b></b><span>store on S3</span><i>queued</i></div>
+                  </div>
+                )}
+              </div>
+
+              <div class="project-copy">
+                <div class="project-meta"><span>{project.number}</span><span>{project.type}</span></div>
+                <h3>{project.name}</h3>
+                <p class="project-summary">{project.summary}</p>
+                <p class="project-detail">{project.detail}</p>
+                <ul class="project-stack" aria-label={`${project.name} technology stack`}>
+                  {project.stack.map((item) => <li>{item}</li>)}
+                </ul>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="about" id="about" aria-labelledby="about-title">
+        <div class="section-intro">
+          <p class="eyebrow">02 / How I work</p>
+          <h2 id="about-title">The best product decisions are technical decisions, too.</h2>
+        </div>
+        <div class="practice-list">
+          {practices.map(([title, copy], index) => (
+            <article class="practice">
+              <span>0{index + 1}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="experience" aria-labelledby="experience-title">
+        <div class="experience-heading">
+          <p class="eyebrow">03 / Experience</p>
+          <h2 id="experience-title">Building across the product stack.</h2>
+        </div>
+        <ol>
+          {experience.map(([period, role, copy]) => (
+            <li>
+              <span>{period}</span>
+              <h3>{role}</h3>
+              <p>{copy}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section class="contact" id="contact" aria-labelledby="contact-title">
+        <p class="eyebrow">04 / Contact</p>
+        <h2 id="contact-title">Have a difficult problem to solve?</h2>
+        <p>Let us make the next useful thing.</p>
+        <a href="mailto:contact@niteshpoudel.com">contact@niteshpoudel.com <span aria-hidden="true">&#8599;</span></a>
+      </section>
+    </main>
+
+    <footer>
+      <span>Nitesh Poudel</span>
+      <span>Software Engineer</span>
+    </footer>
   </body>
 </html>
 
 <style>
-  :global(*) {
-    box-sizing: border-box;
-  }
-
-  :global(html) {
-    background: var(--background);
-    color-scheme: light dark;
-  }
-
-  :global(body) {
-    min-height: 100vh;
-    margin: 0;
-    background: var(--background);
-    color: var(--text);
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  }
-
-  .site-header {
-    width: 100%;
-  }
-
   :global(:root) {
     --background: #ffffff;
-    --surface: #f5f5f5;
-    --text: #171717;
-    --text-muted: #777777;
-    --border: #e5e5e5;
-    --accent: #d95d39;
+    --surface: #f5f5f3;
+    --surface-strong: #ecece9;
+    --text: #191919;
+    --text-muted: #6d6d69;
+    --border: #deded9;
+    --accent: #d64238;
   }
 
   :global(html[data-theme="dark"]) {
     --background: #171717;
-    --surface: #242424;
-    --text: #f5f5f5;
-    --text-muted: #a3a3a3;
-    --border: #383838;
-    --accent: #ff8b6b;
+    --surface: #20201f;
+    --surface-strong: #292927;
+    --text: #f7f6f2;
+    --text-muted: #aaa9a3;
+    --border: #3a3a37;
+    --accent: #f06b61;
   }
 
   @media (prefers-color-scheme: dark) {
     :global(html:not([data-theme])) {
       --background: #171717;
-      --surface: #242424;
-      --text: #f5f5f5;
-      --text-muted: #a3a3a3;
-      --border: #383838;
-      --accent: #ff8b6b;
+      --surface: #20201f;
+      --surface-strong: #292927;
+      --text: #f7f6f2;
+      --text-muted: #aaa9a3;
+      --border: #3a3a37;
+      --accent: #f06b61;
     }
   }
 
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: min(100% - 3rem, 1200px);
-    min-height: 80px;
-    margin: 0 auto;
-  }
+  :global(*) { box-sizing: border-box; }
+  :global(html) { background: var(--background); color-scheme: light dark; scroll-behavior: smooth; }
+  :global(body) { margin: 0; background: var(--background); color: var(--text); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  :global(a) { color: inherit; }
 
-  .brand {
-    display: block;
-    width: 54px;
-    height: 25px;
-    text-decoration: none;
-  }
+  .site-header { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--border); background: color-mix(in srgb, var(--background) 92%, transparent); backdrop-filter: blur(12px); }
+  nav { display: flex; align-items: center; justify-content: space-between; width: min(100% - 3rem, 1240px); min-height: 76px; margin: 0 auto; }
+  .brand { display: block; width: 54px; height: 25px; text-decoration: none; }
+  .brand-logo { position: relative; display: block; width: 100%; height: 100%; overflow: hidden; }
+  .brand-logo img { position: absolute; top: -39px; left: -33px; display: block; width: 108px; max-width: none; }
+  .brand-logo__dark { display: none !important; }
+  :global(html[data-theme="dark"]) .brand-logo__light { display: none !important; }
+  :global(html[data-theme="dark"]) .brand-logo__dark { display: block !important; }
+  .nav-actions { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-actions > a { color: var(--text-muted); font-size: 0.8rem; font-weight: 500; text-decoration: none; transition: color 160ms ease; }
+  .nav-actions > a:hover, .nav-actions > a:focus-visible { color: var(--text); }
 
-  .brand-logo {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
+  .hero, .work, .about, .experience, .contact { width: min(100% - 3rem, 1240px); margin: 0 auto; }
+  .hero { display: grid; min-height: min(720px, calc(100vh - 76px)); align-content: center; padding: 8rem 0 7rem; }
+  .eyebrow { display: flex; align-items: center; gap: 0.55rem; margin: 0; color: var(--text-muted); font-size: 0.72rem; font-weight: 600; letter-spacing: 0; text-transform: uppercase; }
+  .hero .eyebrow span { width: 0.55rem; height: 0.55rem; border-radius: 50%; background: var(--accent); }
+  .hero-copy { max-width: 940px; margin-top: 2.4rem; }
+  h1, h2, h3, p { margin-top: 0; }
+  h1 { max-width: 850px; margin-bottom: 1.5rem; font-size: clamp(3.5rem, 7.4vw, 7.2rem); font-weight: 500; letter-spacing: 0; line-height: 0.96; }
+  .hero-copy p { max-width: 520px; margin-bottom: 0; color: var(--text-muted); font-size: 1.08rem; line-height: 1.7; }
+  .hero-link { width: fit-content; margin-top: 4rem; color: var(--text); font-size: 0.9rem; font-weight: 600; text-decoration: none; }
+  .hero-link span { margin-left: 0.4rem; color: var(--accent); }
 
-  .brand-logo img {
-    position: absolute;
-    top: -39px;
-    left: -33px;
-    display: block;
-    width: 108px;
-    max-width: none;
-  }
+  .work, .about, .experience { padding: 8rem 0; border-top: 1px solid var(--border); }
+  .section-intro { display: grid; grid-template-columns: minmax(150px, 0.38fr) 1fr; gap: 2rem; margin-bottom: 5rem; }
+  .section-intro h2, .experience-heading h2 { max-width: 670px; margin-bottom: 0; font-size: clamp(2rem, 4vw, 3.85rem); font-weight: 500; letter-spacing: 0; line-height: 1.05; }
+  .project-list { display: grid; gap: 0; border-top: 1px solid var(--border); }
+  .project { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr); gap: clamp(2rem, 6vw, 7rem); padding: clamp(2.5rem, 5vw, 5rem) 0; border-bottom: 1px solid var(--border); }
+  .project:nth-child(even) .project-visual { order: 2; }
+  .project-visual { position: relative; display: grid; min-height: 360px; place-items: center; overflow: hidden; background: var(--surface); }
+  .project-copy { align-self: center; }
+  .project-meta { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 2.2rem; color: var(--text-muted); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; }
+  .project-meta span:first-child { color: var(--accent); }
+  .project-meta span:last-child { text-align: right; }
+  .project h3 { margin-bottom: 1rem; font-size: clamp(2.2rem, 4vw, 4.3rem); font-weight: 500; letter-spacing: 0; line-height: 0.95; }
+  .project-summary { margin-bottom: 1.2rem; font-size: 1.08rem; line-height: 1.55; }
+  .project-detail { margin-bottom: 2rem; color: var(--text-muted); font-size: 0.92rem; line-height: 1.7; }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0; padding: 0; list-style: none; }
+  .project-stack li { padding: 0.35rem 0.55rem; border: 1px solid var(--border); color: var(--text-muted); font-size: 0.72rem; }
 
-  .brand-logo__dark {
-    display: none !important;
-  }
+  .flow-ui { position: relative; width: min(78%, 390px); padding: 1rem; background: var(--background); box-shadow: 0 18px 45px rgb(0 0 0 / 9%); transform: rotate(-4deg); }
+  .flow-top { display: flex; gap: 0.3rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
+  .flow-top i { width: 0.38rem; height: 0.38rem; border-radius: 50%; background: var(--surface-strong); }
+  .flow-feed { display: grid; grid-template-columns: 1.5rem 1fr; gap: 0.7rem; padding-top: 1rem; }
+  .avatar { width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--accent); }
+  .line-group { display: grid; gap: 0.3rem; align-content: center; } .line-group b, .line-group span { display: block; height: 0.28rem; background: var(--surface-strong); } .line-group b { width: 45%; } .line-group span { width: 80%; }
+  .image-block { grid-column: 1 / -1; height: 160px; margin-top: 0.4rem; background: linear-gradient(135deg, var(--surface-strong) 0 48%, var(--accent) 48% 53%, var(--text) 53%); }
+  .upload-card { position: absolute; right: -1.5rem; bottom: -1.2rem; display: grid; gap: 0.45rem; width: 180px; padding: 0.8rem; border: 1px solid var(--border); background: var(--background); color: var(--text-muted); font-size: 0.68rem; box-shadow: 0 12px 25px rgb(0 0 0 / 8%); }
+  .upload-card b { height: 0.22rem; background: linear-gradient(90deg, var(--accent) 72%, var(--surface-strong) 72%); }
+  .code-ui { width: min(82%, 420px); margin: 0; padding: 2rem; overflow: hidden; background: #20201f; color: #dcdbd6; font-size: clamp(0.65rem, 1.4vw, 0.9rem); line-height: 1.8; box-shadow: 0 18px 45px rgb(0 0 0 / 12%); } .code-ui span { color: #f06b61; } .code-ui em { color: #f4c26a; font-style: normal; }
+  .queue-ui { width: min(82%, 420px); padding: 1.5rem; background: var(--background); box-shadow: 0 18px 45px rgb(0 0 0 / 9%); }
+  .queue-label { margin-bottom: 1rem; color: var(--accent); font-size: 0.72rem; font-weight: 700; }
+  .queue-row { display: grid; grid-template-columns: 0.6rem 1fr auto; align-items: center; gap: 0.7rem; padding: 0.9rem 0; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.74rem; }
+  .queue-row b { width: 0.48rem; height: 0.48rem; border-radius: 50%; background: var(--surface-strong); } .queue-row:first-of-type b { background: #67a376; } .queue-row:nth-of-type(2) b { background: var(--accent); }
+  .queue-row i { color: var(--text-muted); font-size: 0.66rem; font-style: normal; }
 
-  :global(html[data-theme="dark"]) .brand-logo__light {
-    display: none !important;
-  }
+  .about { display: grid; grid-template-columns: 1fr; }
+  .practice-list { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--border); border-left: 1px solid var(--border); }
+  .practice { min-height: 250px; padding: 2rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .practice > span { color: var(--accent); font-size: 0.72rem; font-weight: 700; }
+  .practice h3 { margin: 4rem 0 0.8rem; font-size: 1.3rem; font-weight: 600; }
+  .practice p { margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.65; }
 
-  :global(html[data-theme="dark"]) .brand-logo__dark {
-    display: block !important;
-  }
+  .experience { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 5rem; }
+  .experience ol { margin: 0; padding: 0; list-style: none; }
+  .experience li { display: grid; grid-template-columns: 130px 1fr; gap: 0.7rem 1.5rem; padding: 1.4rem 0; border-top: 1px solid var(--border); }
+  .experience li:last-child { border-bottom: 1px solid var(--border); }
+  .experience li > span { color: var(--text-muted); font-size: 0.75rem; font-weight: 600; }
+  .experience h3 { margin: 0; font-size: 1rem; font-weight: 600; }
+  .experience li p { grid-column: 2; margin: 0; color: var(--text-muted); font-size: 0.88rem; line-height: 1.55; }
 
-  @media (prefers-color-scheme: dark) {
-    :global(html:not([data-theme])) .brand-logo__light {
-      display: none !important;
-    }
+  .contact { padding: clamp(5rem, 11vw, 9rem) 0; border-top: 1px solid var(--border); }
+  .contact h2 { max-width: 850px; margin: 2rem 0 1.3rem; font-size: clamp(2.8rem, 6vw, 6.4rem); font-weight: 500; letter-spacing: 0; line-height: 0.98; }
+  .contact p:not(.eyebrow) { margin-bottom: 2.5rem; color: var(--text-muted); font-size: 1.05rem; }
+  .contact > a { display: inline-flex; align-items: center; gap: 0.5rem; padding-bottom: 0.3rem; border-bottom: 2px solid var(--accent); color: var(--text); font-size: 1.05rem; font-weight: 600; text-decoration: none; }
+  .contact > a span { color: var(--accent); }
+  footer { display: flex; justify-content: space-between; width: min(100% - 3rem, 1240px); margin: 0 auto; padding: 1.5rem 0; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.72rem; }
 
-    :global(html:not([data-theme])) .brand-logo__dark {
-      display: block !important;
-    }
-  }
-
-  ul {
-    display: flex;
-    align-items: center;
-    gap: 1.75rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  li a {
-    color: var(--text-muted);
-    font-size: 0.82rem;
-    font-weight: 450;
-    letter-spacing: 0;
-    text-decoration: none;
-    transition: color 160ms ease;
-  }
-
-  li a:hover,
-  li a:focus-visible {
-    color: var(--text);
-  }
-
-  a:focus-visible {
-    outline: 2px solid var(--text);
-    outline-offset: 4px;
-  }
-
-  @media (max-width: 560px) {
-    nav {
-      width: min(100% - 2rem, 1200px);
-      min-height: 72px;
-    }
-
-    ul {
-      gap: 1rem;
-    }
-
-    li a {
-      font-size: 0.78rem;
-    }
+  @media (prefers-color-scheme: dark) { :global(html:not([data-theme])) .brand-logo__light { display: none !important; } :global(html:not([data-theme])) .brand-logo__dark { display: block !important; } }
+  @media (max-width: 760px) {
+    nav, .hero, .work, .about, .experience, .contact, footer { width: min(100% - 2rem, 1240px); }
+    nav { min-height: 68px; }
+    .nav-actions { gap: 0.9rem; } .nav-actions > a { font-size: 0.74rem; }
+    .nav-actions > a:nth-child(2) { display: none; }
+    .hero { min-height: calc(100svh - 68px); padding: 5.5rem 0 4.5rem; }
+    .section-intro, .experience { grid-template-columns: 1fr; gap: 1.5rem; }
+    .work, .about, .experience { padding: 5rem 0; }
+    .section-intro { margin-bottom: 3rem; }
+    .project { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 0; }
+    .project:nth-child(even) .project-visual { order: 0; }
+    .project-visual { min-height: 290px; }
+    .practice-list { grid-template-columns: 1fr; }
+    .practice { min-height: 0; padding: 1.5rem; } .practice h3 { margin-top: 2.5rem; }
+    .experience { gap: 3rem; } .experience li { grid-template-columns: 1fr; gap: 0.55rem; } .experience li p { grid-column: auto; }
   }
 </style>
