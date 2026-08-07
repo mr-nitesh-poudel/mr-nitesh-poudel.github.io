@@ -1,0 +1,21 @@
+.page-shell { width:min(100% - 3rem, 1160px); min-height:100vh; margin:auto; display:grid; grid-template-columns:42% 58%; gap:4rem; }
+.intro { position:sticky; top:0; height:100vh; display:flex; flex-direction:column; justify-content:space-between; padding:5.8rem 0 3.5rem; }
+.name { font-size:clamp(2rem, 3vw, 2.9rem); font-weight:750; letter-spacing:-.065em; text-decoration:none; }
+.role { margin:.5rem 0 1.2rem; font-size:1.15rem; font-weight:600; letter-spacing:-.025em; }
+.summary { max-width:330px; margin:0; color:var(--muted); font-size:.95rem; line-height:1.65; }
+nav { width:min(100%, 300px); margin-top:4.8rem; }
+.nav-label { display:block; margin-bottom:.7rem; color:var(--muted); font-size:.63rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+.nav-grid { display:flex; flex-direction:column; gap:.45rem; }
+nav a { padding:.7rem .8rem; border:1px solid var(--border); border-radius:3px; color:var(--muted); font-size:.74rem; font-weight:650; text-decoration:none; transition:background .18s, border-color .18s, color .18s, transform .18s, box-shadow .18s; }
+nav a:hover, nav a:focus-visible { border-color:var(--accent); background:var(--surface); color:var(--text); box-shadow:4px 4px 0 var(--accent); transform:translate(-2px, -2px) rotate(-.45deg); outline:none; }
+nav a::after { content:"↘"; float:right; color:var(--accent); opacity:0; transform:translate(-5px, 5px) rotate(-25deg); transition:opacity .18s, transform .22s cubic-bezier(.16, 1, .3, 1); }
+nav a:hover::after, nav a:focus-visible::after { opacity:1; transform:translate(0) rotate(0); }
+main { padding:5.8rem 0 0; }
+section { margin-bottom:9rem; scroll-margin-top:2rem; }
+.eyebrow { margin:0 0 1.75rem; color:var(--accent); font-size:.7rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+h1, h2, h3, p { margin-top:0; }
+h1, h2 { max-width:640px; font-size:clamp(1.7rem, 3.1vw, 2.45rem); font-weight:650; letter-spacing:-.045em; line-height:1.15; }
+h1 ~ p { max-width:590px; color:var(--muted); font-size:.96rem; line-height:1.75; }
+#contact > p:not(.eyebrow) { color:var(--muted); line-height:1.7; }
+footer { padding:2rem 0; border-top:1px solid var(--border); color:var(--muted); font-size:.7rem; }
+@media (max-width:800px) { .page-shell { display:block; width:min(100% - 2.4rem, 680px); } .intro { position:relative; height:auto; padding:4.5rem 0 3.5rem; } nav { display:none; } main { padding:2.5rem 0 0; } section { margin-bottom:6rem; } }
