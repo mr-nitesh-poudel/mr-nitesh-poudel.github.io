@@ -5,12 +5,14 @@ const ICON_SIZE: &str = "1rem";
 
 fn render(data: IconData, class: &'static str) -> Html {
     html! {
-        <Icon
-            {data}
-            class={class}
-            width={ICON_SIZE.to_owned()}
-            height={ICON_SIZE.to_owned()}
-        />
+        <span aria-hidden="true">
+            <Icon
+                {data}
+                class={class}
+                width={ICON_SIZE.to_owned()}
+                height={ICON_SIZE.to_owned()}
+            />
+        </span>
     }
 }
 

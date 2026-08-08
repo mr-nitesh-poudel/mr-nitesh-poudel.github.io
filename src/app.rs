@@ -7,7 +7,7 @@ pub fn app() -> Html {
     html! {
         <div class="page-shell">
             <Sidebar />
-            <main>
+            <main id="main-content" tabindex="-1">
                 <About />
                 <Projects />
                 <Contact />

@@ -38,7 +38,8 @@ pub fn contact() -> Html {
     };
 
     html! {
-        <section id="contact" aria-label="Contact">
+        <section id="contact" aria-labelledby="contact-title">
+            <h2 id="contact-title" class="sr-only">{"Contact"}</h2>
             <p class="eyebrow">{"Contact"}</p>
             <p>{"Have a product or technical problem to solve? My inbox is open."}</p>
             <div class="email-actions">
