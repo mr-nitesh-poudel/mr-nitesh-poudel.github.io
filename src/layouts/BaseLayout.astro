@@ -7,12 +7,28 @@ const socialImageUrl = new URL("/og-nitesh-poudel.png", site.url).href;
 const structuredData = JSON.stringify({
   "@context": "https://schema.org",
   "@graph": [
-    { "@type": "WebSite", name: site.name, url: canonicalUrl.origin },
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      name: site.name,
+      url: canonicalUrl.href,
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `${site.url}/#profile`,
+      name: site.title,
+      description: site.description,
+      url: canonicalUrl.href,
+      image: socialImageUrl,
+      isPartOf: { "@id": `${site.url}/#website` },
+      mainEntity: { "@id": `${site.url}/#person` },
+    },
     {
       "@type": "Person",
+      "@id": `${site.url}/#person`,
       name: site.name,
       jobTitle: site.role,
-      url: canonicalUrl.origin,
+      url: canonicalUrl.href,
       email: `mailto:${site.email}`,
       sameAs: [site.githubUrl],
     },
@@ -26,12 +42,14 @@ const structuredData = JSON.stringify({
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={site.description} />
+    <meta name="author" content={site.name} />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#171717" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <title>{site.title}</title>
     <link rel="canonical" href={canonicalUrl} />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.name} />

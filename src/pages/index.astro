@@ -1,7 +1,6 @@
 ---
-import CopyEmail from "../components/CopyEmail";
+import ContactForm from "../components/ContactForm";
 import Sidebar from "../components/Sidebar.astro";
-import { skills } from "../data/portfolio";
 import { site } from "../data/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
@@ -13,25 +12,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <section id="about" aria-labelledby="about-title">
         <p class="eyebrow">About</p>
         <h2 id="about-title">Building products that feel simple, even when the systems behind them are not.</h2>
-        <p>I’m a full-stack developer who enjoys working where product thinking and engineering meet. My work spans native iOS apps, APIs, background processing, and cloud infrastructure.</p>
-        <p>I care about clear interfaces, resilient systems, and shipping useful things that can keep improving after launch.</p>
-        <div class="skill-list" aria-label="Tools I use">
-          {skills.map((skill) => <span>{skill}</span>)}
-        </div>
       </section>
 
       <section id="contact" aria-labelledby="contact-title">
-        <h2 id="contact-title" class="sr-only">Contact</h2>
         <p class="eyebrow">Contact</p>
-        <p>Have a product or technical problem to solve? My inbox is open.</p>
-        <div class="email-actions">
-          <a class="email" href={`mailto:${site.email}`}>
-            {site.email}
-            <svg class="external-link-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9" /></svg>
-          </a>
-          <CopyEmail client:load />
-        </div>
-        <footer>© 2026 {site.name} · Built with Astro and Solid</footer>
+        <h2 id="contact-title">Let’s work together.</h2>
+        <ContactForm client:load endpoint={site.formEndpoint} />
       </section>
     </main>
   </div>
