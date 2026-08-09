@@ -1,0 +1,21 @@
+{
+  "name": "nitesh-poudel-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/solid-js": "^5.1.0",
+    "astro": "^5.10.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "solid-js": "^1.9.7"
+  }
+}

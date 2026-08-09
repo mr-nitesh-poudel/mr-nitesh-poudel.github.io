@@ -1,37 +1,26 @@
 # Nitesh Poudel — Portfolio
 
-A static portfolio site built with Rust, [Yew](https://yew.rs/), and [Trunk](https://trunkrs.dev/). The résumé PDF is retained as a static asset for future use.
-
-## Project structure
-
-- `src/app.rs` composes the page from feature components.
-- `src/components/` contains isolated presentation and interaction components.
-- `src/data/portfolio.rs` owns portfolio content and contact constants.
-- `src/services/` wraps browser capabilities, such as clipboard access.
-- `src/utils/` contains reusable UI utilities, including theme persistence.
-- `styles/` separates theme tokens, global defaults, layout, and component styles.
-
-This keeps content, browser APIs, layout, and UI rendering independent as the site expands.
+A static portfolio site built with [Astro](https://astro.build/), [Solid](https://www.solidjs.com/), and TypeScript. Astro renders the portfolio content; Solid powers the persisted theme control and copy-email interaction.
 
 ## Development
 
-Install the WebAssembly target and Trunk once:
+Use Node.js 22 or newer, then install dependencies:
 
 ```sh
-rustup target add wasm32-unknown-unknown
-cargo install trunk --locked
+npm install
 ```
 
 Start the development server:
 
 ```sh
-trunk serve --open
+npm run dev
 ```
 
-Create a production build:
+Validate the project and create a production build:
 
 ```sh
-trunk build --release
+npm run check
+npm run build
 ```
 
-The production output is written to `dist/`. GitHub Actions builds and deploys that directory to GitHub Pages.
+GitHub Actions installs dependencies with `npm ci`, builds `dist/`, and deploys it to GitHub Pages. Static assets, including the custom-domain `CNAME`, are served from `public/`.
